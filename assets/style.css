@@ -370,3 +370,8 @@ main{z-index:3}footer{z-index:2}.stone{z-index:5}
 /* product details card: bullets in the body font (same as the delivery options); heading stays typewriter */
 .specs ul,.specs li{font-family:var(--body);text-transform:none;letter-spacing:0}
 .specs li{font-size:.95rem;line-height:1.6}
+
+/* home placeholder */
+.soon{padding-block:clamp(48px,12vh,120px) clamp(120px,22vh,240px)}
+.soon .lead{max-width:34rem}
+.soon .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}

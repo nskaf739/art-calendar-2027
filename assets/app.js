@@ -44,25 +44,9 @@ function stone(){return '<img class="stone" src="'+STONE+'" alt="">'}
 
 function home(){
     app.innerHTML='<div>'+
-  '<section class="hero"><div class="wrap hero-grid"><div>'+
-    '<p class="type" style="color:var(--muted);margin-bottom:20px">Calendar Series 01 · Year of 2027</p>'+
-    '<h1>Art <mark>calendar</mark></h1>'+
-    '<p class="lead"><strong>Twelve paintings, one calendar for 2027.</strong> Every page is one of my own paintings. Order yours, then have it shipped to your home or get it from me in person.</p>'+
-    '<div class="actions"><a class="pill" href="#shop">Order a print</a><a class="btn line" href="#art">See all paintings</a></div>'+
-  '</div><div class="polwrap"><img class="studio" src="'+STUDIO+'" alt="Paintings and colour swatches in my studio">'+
-    '<div class="sticker"><div><b>12</b><span>art<br>pages</span></div></div></div></div></section>'+
-
-  '<section class="sec"><div class="wrap"><div class="prevcap"><p class="type galcap">A peek inside</p><a class="type" href="#art">All twelve →</a></div>'+
-    '<div class="gallery prev">'+[1,9,7,2,11,4].map(function(n){var s=ART_GALLERY[n];return '<figure><a href="#art"><img src="'+s+'" alt="'+esc(ART_INFO[n].title)+'" loading="lazy"></a></figure>'}).join("")+'</div></div></section>'+
-
-  '<section class="sec"><div class="wrap"><article class="letter sheet"><p class="type lh">Dear friend,</p>'+
-    '<p>This series explores art as a way of navigating emotional uncertainty. When emotions resist clear naming or expression, visual language can give form to the intangible.</p>'+
-    '<p>Through animals and abstract, graphic elements, emotions are translated into symbolic representations. What is difficult to articulate becomes perceptible, opening a space for reflection and understanding.</p>'+
-    '<p class="type lh">Beauty lies in contrast and ambiguity.</p>'+
-    '<p>This edition explores how emotions can become tangible without losing their complexity or having the goal to resolve their ambiguity. By balancing detailed perception with abstract form, the compositions invite you to embrace ambiguity as an essential part of that complexity, rather than searching for a definitive interpretation.</p>'+
-    '<p class="lh sign">\u2013 Love, Sujin</p>'+
-  '</article></div></section>'+
-  '<section class="sec"><div class="wrap"><div class="ticket"><h2>Want one for your wall?</h2><a class="pill" href="#shop">Order a print</a></div></div></section>'+
+  '<section class="sec soon"><div class="wrap"><p class="type" style="color:var(--muted);margin-bottom:20px">Sujin Park</p>'+
+    '<h1><mark>Coming soon</mark></h1>'+
+    '<p class="lead">New work is on its way.</p></div></section>'+
   stone()+'</div>';
 }
 
@@ -79,8 +63,25 @@ function art(){
 function orderPage(){
   app.innerHTML='<div><section class="sub tight"><div class="wrap">'+
     '<div class="crumb type"><a href="#home">Home</a><span>/</span><span>Shop</span></div>'+
-    '<div class="titlerow"><h1><mark>Shop</mark></h1></div>'+
     '</div></section>'+
+  '<section class="hero"><div class="wrap hero-grid"><div>'+
+    '<p class="type" style="color:var(--muted);margin-bottom:20px">Calendar Series 01 · Year of 2027</p>'+
+    '<h1>Art <mark>calendar</mark></h1>'+
+    '<p class="lead"><strong>Twelve paintings, one calendar for 2027.</strong> Every page is one of my own paintings. Order yours, then have it shipped to your home or get it from me in person.</p>'+
+    '<div class="actions"><a class="pill" href="#orderform" data-go="orderform">Order a print</a><a class="btn line" href="#art">See all paintings</a></div>'+
+  '</div><div class="polwrap"><img class="studio" src="'+STUDIO+'" alt="Paintings and colour swatches in my studio">'+
+    '<div class="sticker"><div><b>12</b><span>art<br>pages</span></div></div></div></div></section>'+
+
+  '<section class="sec"><div class="wrap"><div class="prevcap"><p class="type galcap">A peek inside</p><a class="type" href="#art">All twelve →</a></div>'+
+    '<div class="gallery prev">'+[1,9,7,2,11,4].map(function(n){var s=ART_GALLERY[n];return '<figure><a href="#art"><img src="'+s+'" alt="'+esc(ART_INFO[n].title)+'" loading="lazy"></a></figure>'}).join("")+'</div></div></section>'+
+
+  '<section class="sec"><div class="wrap"><article class="letter sheet"><p class="type lh">Dear friend,</p>'+
+    '<p>This series explores art as a way of navigating emotional uncertainty. When emotions resist clear naming or expression, visual language can give form to the intangible.</p>'+
+    '<p>Through animals and abstract, graphic elements, emotions are translated into symbolic representations. What is difficult to articulate becomes perceptible, opening a space for reflection and understanding.</p>'+
+    '<p class="type lh">Beauty lies in contrast and ambiguity.</p>'+
+    '<p>This edition explores how emotions can become tangible without losing their complexity or having the goal to resolve their ambiguity. By balancing detailed perception with abstract form, the compositions invite you to embrace ambiguity as an essential part of that complexity, rather than searching for a definitive interpretation.</p>'+
+    '<p class="lh sign">\u2013 Love, Sujin</p>'+
+  '</article></div></section>'+
   '<section class="sec"><div class="wrap"><p class="type galcap">The calendar \u00b7 Year of 2027</p><div class="gallery">'+CAL_GALLERY.map(function(src,n){return calfig(src,CAL_INFO[n],"Calendar photo "+(n+1))}).join("")+'</div></div></section>'+
   '<section class="sec" style="padding-top:0"><div class="wrap"><div class="specs"><p class="type galcap">Product details</p><ul class="type">'+
     '<li>300 gsm high-quality matte print (metal spiral, Wire-O binding)</li>'+
@@ -107,6 +108,8 @@ function orderPage(){
     '<div class="formact"><button class="pill" type="submit">Place order</button><span class="type" style="color:var(--muted)">You pay after ordering.</span></div>'+
   '</form></div></section>'+stone()+'</div>';
   var f=document.getElementById("orderform");
+  var go=app.querySelector("[data-go]");
+  if(go)go.addEventListener("click",function(e){e.preventDefault();f.scrollIntoView({behavior:"smooth",block:"start"})});
   function upd(){
     var q=Math.max(0,Math.floor(Number(f.qty.value))||0);
     var sh=f.delivery.value==="Shipping to my home";
