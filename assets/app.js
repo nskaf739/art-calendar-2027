@@ -12,6 +12,8 @@ var TOPICS=[
 ];
 var ART_GALLERY=["assets/img/art01.jpg","assets/img/art02.jpg","assets/img/art03.jpg","assets/img/art04.jpg","assets/img/art05.jpg","assets/img/art06.jpg","assets/img/art07.jpg","assets/img/art08.jpg","assets/img/art09.jpg","assets/img/art10.jpg","assets/img/art11.jpg","assets/img/art12.jpg"];
 var ORG_GALLERY=["assets/img/org01.jpg","assets/img/org02.jpg","assets/img/org03.jpg"];
+var NEW_GALLERY=["assets/img/new01.jpg","assets/img/new02.jpg","assets/img/new03.jpg"];
+var NEW_INFO=[{title:"",date:"November 2026",notes:""},{title:"",date:"November 2026",notes:""},{title:"",date:"November 2026",notes:""}];
 var ART_INFO=[{title:"Elephant",date:"October 04, 2026",notes:""},{title:"Red horse and iris",date:"April 10, 2026",notes:""},{title:"Two birds",date:"May 19, 2026",notes:""},{title:"Fish",date:"June 17, 2026",notes:""},{title:"Black cat",date:"June 17, 2026",notes:""},{title:"Blue moon",date:"June 17, 2026",notes:""},{title:"Duck",date:"June 24, 2026",notes:""},{title:"Butterfly",date:"July 10, 2026",notes:""},{title:"Bug",date:"July 11, 2026",notes:""},{title:"Tiger",date:"July 22, 2026",notes:""},{title:"Hill",date:"August 09, 2026",notes:""},{title:"Swans' dance",date:"August 09, 2026",notes:""}];
 var CAL_GALLERY=["assets/img/cal08.jpg","assets/img/cal10.jpg","assets/img/cal01.jpg","assets/img/cal02.jpg","assets/img/cal03.jpg","assets/img/cal04.jpg","assets/img/cal09.jpg","assets/img/cal05.jpg","assets/img/cal06.jpg"];
 var CAL_INFO=[{title:"The cover",notes:"Year 2027 \u2013 Edition 01."},{title:"The letter",notes:"A note printed inside the calendar."},{title:"October on the wall",notes:"The tiger spread, hanging."},{title:"September on the wall",notes:"The beetle spread, hanging."},{title:"Spiral binding",notes:"Wire-o binding with a hanging notch."},{title:"November",notes:"The elephant, seen from the side."},{title:"March",notes:"The red horse and iris."},{title:"October on the desk",notes:"Lays flat next to your coffee."},{title:"September by the lamp",notes:"The beetle spread on a shelf."}];
@@ -65,6 +67,7 @@ function art(){
     '<div class="crumb type"><a href="#home">Home</a><span>/</span><span>Art</span></div>'+
     '<div class="titlerow"><h1><mark>Art</mark></h1></div></div></section>'+
   '<section class="sec"><div class="wrap"><p class="type galcap">Calendar Series 01 / Year of 2027</p><div class="gallery">'+ART_GALLERY.map(function(src,n){return fig(src,ART_INFO[n],"Artwork "+(n+1))}).join("")+'</div></div></section>'+
+  '<section class="sec"><div class="wrap"><p class="type galcap">New works \u00b7 November 2026</p><div class="gallery">'+NEW_GALLERY.map(function(src,n){return fig(src,NEW_INFO[n],"New artwork "+(n+1))}).join("")+'</div></div></section>'+
   /* Organic row hidden for now: add it back here with ORG_GALLERY/ORG_INFO */
   '<section class="sec"><div class="wrap"><div class="ticket"><h2>Want one for your wall?</h2><a class="pill" href="#order">Order a print</a></div></div></section>'+
   stone()+'</div>';
