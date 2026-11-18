@@ -65,15 +65,12 @@ function orderPage(){
     '<div class="crumb type"><a href="#home">Home</a><span>/</span><span>Shop</span></div>'+
     '</div></section>'+
   '<section class="hero"><div class="wrap hero-grid"><div>'+
-    '<p class="type" style="color:var(--muted);margin-bottom:20px">Calendar Series 01 · Year of 2027</p>'+
+    '<p class="type" style="color:var(--muted);margin-bottom:20px">Series 01 \u2013 Year of 2027</p>'+
     '<h1>Art <mark>calendar</mark></h1>'+
     '<p class="lead"><strong>Twelve paintings, one calendar for 2027.</strong> Every page is one of my own paintings. Order yours, then have it shipped to your home or get it from me in person.</p>'+
-    '<div class="actions"><a class="pill" href="#orderform" data-go="orderform">Order a print</a><a class="btn line" href="#art">See all paintings</a></div>'+
+    '<div class="actions"><a class="pill" href="#orderform" data-go="orderform">Order a calendar</a><a class="btn line" href="#art">See all paintings included in this calendar</a></div>'+
   '</div><div class="polwrap"><img class="studio" src="'+STUDIO+'" alt="Paintings and colour swatches in my studio">'+
     '<div class="sticker"><div><b>12</b><span>art<br>pages</span></div></div></div></div></section>'+
-
-  '<section class="sec"><div class="wrap"><div class="prevcap"><p class="type galcap">A peek inside</p><a class="type" href="#art">All twelve →</a></div>'+
-    '<div class="gallery prev">'+[1,9,7,2,11,4].map(function(n){var s=ART_GALLERY[n];return '<figure><a href="#art"><img src="'+s+'" alt="'+esc(ART_INFO[n].title)+'" loading="lazy"></a></figure>'}).join("")+'</div></div></section>'+
 
   '<section class="sec"><div class="wrap"><article class="letter sheet"><p class="type lh">Dear friend,</p>'+
     '<p>This series explores art as a way of navigating emotional uncertainty. When emotions resist clear naming or expression, visual language can give form to the intangible.</p>'+

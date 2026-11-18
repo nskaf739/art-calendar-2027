@@ -375,3 +375,9 @@ main{z-index:3}footer{z-index:2}.stone{z-index:5}
 .soon{padding-block:clamp(48px,12vh,120px) clamp(120px,22vh,240px)}
 .soon .lead{max-width:34rem}
 .soon .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+
+/* long secondary hero button: allow wrapping so it never overflows on phones */
+@media(max-width:760px){
+  .hero .actions{flex-wrap:wrap}
+  .hero .actions .btn{white-space:normal;text-align:left;line-height:1.25;flex:1 1 150px;max-width:260px}
+}
