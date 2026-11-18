@@ -12,7 +12,7 @@ var TOPICS=[
 ];
 var ART_GALLERY=["assets/img/art01.jpg","assets/img/art02.jpg","assets/img/art03.jpg","assets/img/art04.jpg","assets/img/art05.jpg","assets/img/art06.jpg","assets/img/art07.jpg","assets/img/art08.jpg","assets/img/art09.jpg","assets/img/art10.jpg","assets/img/art11.jpg","assets/img/art12.jpg"];
 var ORG_GALLERY=["assets/img/org01.jpg","assets/img/org02.jpg","assets/img/org03.jpg"];
-var NEW_GALLERY=["assets/img/new01.jpg","assets/img/new02.jpg","assets/img/new03.jpg"];
+var NEW_GALLERY=["assets/img/series02-01.jpg","assets/img/series02-02.jpg","assets/img/series02-03.jpg"];
 var NEW_INFO=[{title:"",date:"November 2026",notes:""},{title:"",date:"November 2026",notes:""},{title:"",date:"November 2026",notes:""}];
 var ART_INFO=[{title:"Elephant",date:"October 04, 2026",notes:""},{title:"Red horse and iris",date:"April 10, 2026",notes:""},{title:"Two birds",date:"May 19, 2026",notes:""},{title:"Fish",date:"June 17, 2026",notes:""},{title:"Black cat",date:"June 17, 2026",notes:""},{title:"Blue moon",date:"June 17, 2026",notes:""},{title:"Duck",date:"June 24, 2026",notes:""},{title:"Butterfly",date:"July 10, 2026",notes:""},{title:"Bug",date:"July 11, 2026",notes:""},{title:"Tiger",date:"July 22, 2026",notes:""},{title:"Hill",date:"August 09, 2026",notes:""},{title:"Swans' dance",date:"August 09, 2026",notes:""}];
 var CAL_GALLERY=["assets/img/cal08.jpg","assets/img/cal10.jpg","assets/img/cal01.jpg","assets/img/cal02.jpg","assets/img/cal03.jpg","assets/img/cal04.jpg","assets/img/cal09.jpg","assets/img/cal05.jpg","assets/img/cal06.jpg"];
