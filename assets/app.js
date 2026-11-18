@@ -8,7 +8,7 @@ var CONFIG={
 };
 var TOPICS=[
  {id:"art",title:"Art"},
- {id:"order",title:"Order"}
+ {id:"shop",title:"Shop"}
 ];
 var ART_GALLERY=["assets/img/art01.jpg","assets/img/art02.jpg","assets/img/art03.jpg","assets/img/art04.jpg","assets/img/art05.jpg","assets/img/art06.jpg","assets/img/art07.jpg","assets/img/art08.jpg","assets/img/art09.jpg","assets/img/art10.jpg","assets/img/art11.jpg","assets/img/art12.jpg"];
 var ORG_GALLERY=["assets/img/org01.jpg","assets/img/org02.jpg","assets/img/org03.jpg"];
@@ -44,7 +44,7 @@ function home(){
     '<p class="type" style="color:var(--muted);margin-bottom:20px">Calendar Series 01 · Year of 2027</p>'+
     '<h1>Art <mark>calendar</mark></h1>'+
     '<p class="lead"><strong>Twelve paintings, one calendar for 2027.</strong> Every page is one of my own paintings. Order yours, then have it shipped to your home or get it from me in person.</p>'+
-    '<div class="actions"><a class="pill" href="#order">Order a print</a><a class="btn line" href="#art">See all paintings</a></div>'+
+    '<div class="actions"><a class="pill" href="#shop">Order a print</a><a class="btn line" href="#art">See all paintings</a></div>'+
   '</div><div class="polwrap"><img class="studio" src="'+STUDIO+'" alt="Paintings and colour swatches in my studio">'+
     '<div class="sticker"><div><b>12</b><span>art<br>pages</span></div></div></div></div></section>'+
 
@@ -58,7 +58,7 @@ function home(){
     '<p>This edition explores how emotions can become tangible without losing their complexity or having the goal to resolve their ambiguity. By balancing detailed perception with abstract form, the compositions invite you to embrace ambiguity as an essential part of that complexity, rather than searching for a definitive interpretation.</p>'+
     '<p class="lh sign">\u2013 Love, Sujin</p>'+
   '</article></div></section>'+
-  '<section class="sec"><div class="wrap"><div class="ticket"><h2>Want one for your wall?</h2><a class="pill" href="#order">Order a print</a></div></div></section>'+
+  '<section class="sec"><div class="wrap"><div class="ticket"><h2>Want one for your wall?</h2><a class="pill" href="#shop">Order a print</a></div></div></section>'+
   stone()+'</div>';
 }
 
@@ -69,14 +69,14 @@ function art(){
   '<section class="sec"><div class="wrap"><p class="type galcap">Calendar Series 01 / Year of 2027</p><div class="gallery">'+ART_GALLERY.map(function(src,n){return fig(src,ART_INFO[n],"Artwork "+(n+1))}).join("")+'</div></div></section>'+
   '<section class="sec"><div class="wrap"><p class="type galcap">Series 02 \u2013 Ambiguity of Awareness</p><div class="gallery">'+NEW_GALLERY.map(function(src,n){return fig(src,NEW_INFO[n],"New artwork "+(n+1))}).join("")+'</div></div></section>'+
   /* Organic row hidden for now: add it back here with ORG_GALLERY/ORG_INFO */
-  '<section class="sec"><div class="wrap"><div class="ticket"><h2>Want one for your wall?</h2><a class="pill" href="#order">Order a print</a></div></div></section>'+
+  '<section class="sec"><div class="wrap"><div class="ticket"><h2>Want one for your wall?</h2><a class="pill" href="#shop">Order a print</a></div></div></section>'+
   stone()+'</div>';
 }
 
 function orderPage(){
   app.innerHTML='<div><section class="sub tight"><div class="wrap">'+
-    '<div class="crumb type"><a href="#home">Home</a><span>/</span><span>Order</span></div>'+
-    '<div class="titlerow"><h1><mark>Order</mark></h1></div>'+
+    '<div class="crumb type"><a href="#home">Home</a><span>/</span><span>Shop</span></div>'+
+    '<div class="titlerow"><h1><mark>Shop</mark></h1></div>'+
     '</div></section>'+
   '<section class="sec"><div class="wrap"><p class="type galcap">The calendar \u00b7 Year of 2027</p><div class="gallery">'+CAL_GALLERY.map(function(src,n){return calfig(src,CAL_INFO[n],"Calendar photo "+(n+1))}).join("")+'</div></div></section>'+
   '<section class="sec" style="padding-top:0"><div class="wrap"><div class="specs"><p class="type galcap">Product details</p><ul class="type">'+
@@ -132,7 +132,7 @@ function orderPage(){
 
 function thanks(){
   var o=lastOrder;
-  if(!o){location.hash="#order";return}
+  if(!o){location.hash="#shop";return}
   app.innerHTML='<div><section class="sub"><div class="wrap">'+
     '<div class="crumb type"><a href="#home">Home</a><span>/</span><span>Thank you</span></div></div></section>'+
   '<section class="sec"><div class="wrap"><div class="thanks sheet"><h2>Thank you, '+esc(o.first)+'!</h2>'+
@@ -147,7 +147,7 @@ function thanks(){
 function route(){
   var h=(location.hash||"").replace("#","");
   if(h==="art"){art();renderChips("art")}
-  else if(h==="order"){orderPage();renderChips("order")}
+  else if(h==="shop"||h==="order"){orderPage();renderChips("shop")}
   else if(h==="thanks"){thanks();renderChips("")}
   else{home();renderChips("")}
   window.scrollTo(0,0);
