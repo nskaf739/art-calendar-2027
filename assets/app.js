@@ -1,11 +1,15 @@
 /* ===== Settings: change these two values ===== */
 var CONFIG={
-  price:25,                                   /* PLACEHOLDER: price per calendar */
+  price:12,                                   /* price per calendar (EUR) */
+  maxQty:10,                                  /* price table goes up to 10 calendars */
   currency:"€",
   paypalMe:"sujinprk", /* the name in your link paypal.me/NAME */
   currencyCode:"EUR",
   endpoint:"/api/order"                              /* Vercel function in /api/order.js */
 };
+/* DHL shipping at cost, by number of calendars (see Notion "Calendar Pricing & Shipping 2027") */
+function shipCost(q){return q<=0?0:q<=2?2.9:q===3?4.19:q<=5?5.19:7.69}
+function orderTotal(q,ship){return Math.round((q*CONFIG.price+(ship?shipCost(q):0))*100)/100}
 var TOPICS=[
  {id:"art",title:"Art"},
  {id:"shop",title:"Shop"}
@@ -89,7 +93,7 @@ function orderPage(){
     '<div class="row2"><div class="field"><label for="f-first">First name</label><input type="text" id="f-first" name="first" autocomplete="given-name" required></div>'+
     '<div class="field"><label for="f-last">Last name</label><input type="text" id="f-last" name="last" autocomplete="family-name" required></div></div>'+
     '<div class="field"><label for="f-mail">Email</label><input type="email" id="f-mail" name="email" autocomplete="email" required></div>'+
-    '<div class="field"><label for="f-qty">Quantity</label><input type="number" id="f-qty" name="qty" min="1" max="99" step="1" value="1" inputmode="numeric" required></div>'+
+    '<div class="field"><label for="f-qty">Quantity</label><input type="number" id="f-qty" name="qty" min="1" max="10" step="1" value="1" inputmode="numeric" required></div>'+
     '<fieldset class="field"><legend>Delivery</legend><div class="choices">'+
       '<label class="choice"><input type="radio" name="delivery" value="Receive it in person" checked><span class="ck"></span><span>Receive it in person<small>I\'ll hand it to you when we meet</small></span></label>'+
 '<label class="choice"><input type="radio" name="delivery" value="Shipping to my home"><span class="ck"></span><span>Shipping to my home</span></label>'+
@@ -106,8 +110,9 @@ function orderPage(){
   var f=document.getElementById("orderform");
   function upd(){
     var q=Math.max(0,Math.floor(Number(f.qty.value))||0);
-    document.getElementById("calc").textContent=q+" × "+money(CONFIG.price);
-    document.getElementById("sum").textContent=money(q*CONFIG.price);
+    var sh=f.delivery.value==="Shipping to my home";
+    document.getElementById("calc").textContent=q+" × "+money(CONFIG.price)+(sh&&q>0?" + shipping "+money(shipCost(q)):"");
+    document.getElementById("sum").textContent=money(orderTotal(q,sh));
     var ship=f.delivery.value==="Shipping to my home";
     document.getElementById("addrbox").hidden=!ship;
     ['street','nr','zip','city','country'].forEach(function(k){f[k].required=ship});
@@ -117,10 +122,10 @@ function orderPage(){
     e.preventDefault();
     var err=document.getElementById("err"),q=Math.floor(Number(f.qty.value)),ship=f.delivery.value==="Shipping to my home";
     var addrOk=!ship||['street','nr','zip','city','country'].every(function(k){return f[k].value.trim()});
-    var m=!(f.first.value.trim()&&f.last.value.trim())?"Please enter your first and last name.":!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim())?"Please enter a valid email.":!(q>=1&&q<=99)?"Quantity must be between 1 and 99.":!addrOk?"Please fill in all address fields.":"";
+    var m=!(f.first.value.trim()&&f.last.value.trim())?"Please enter your first and last name.":!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(f.email.value.trim())?"Please enter a valid email.":!(q>=1&&q<=CONFIG.maxQty)?"Quantity must be between 1 and "+CONFIG.maxQty+". For larger orders, please write to sujin.park@gmx.de.":!addrOk?"Please fill in all address fields.":"";
     if(m){err.textContent=m;return}
     err.textContent="";
-    var o={first:f.first.value.trim(),last:f.last.value.trim(),name:f.first.value.trim()+" "+f.last.value.trim(),email:f.email.value.trim(),qty:q,delivery:f.delivery.value,address:ship?(f.street.value.trim()+" "+f.nr.value.trim()+", "+f.zip.value.trim()+" "+f.city.value.trim()+", "+f.country.value.trim()):"",street:f.street.value.trim(),nr:f.nr.value.trim(),zip:f.zip.value.trim(),city:f.city.value.trim(),country:f.country.value.trim(),total:q*CONFIG.price,date:new Date().toISOString().slice(0,10)};
+    var o={first:f.first.value.trim(),last:f.last.value.trim(),name:f.first.value.trim()+" "+f.last.value.trim(),email:f.email.value.trim(),qty:q,delivery:f.delivery.value,address:ship?(f.street.value.trim()+" "+f.nr.value.trim()+", "+f.zip.value.trim()+" "+f.city.value.trim()+", "+f.country.value.trim()):"",street:f.street.value.trim(),nr:f.nr.value.trim(),zip:f.zip.value.trim(),city:f.city.value.trim(),country:f.country.value.trim(),shipping:ship?shipCost(q):0,total:orderTotal(q,ship),date:new Date().toISOString().slice(0,10)};
     var btn=f.querySelector("button");btn.disabled=true;
     function done(){lastOrder=o;location.hash="#thanks"}
     if(!CONFIG.endpoint){done();return}
@@ -138,7 +143,7 @@ function thanks(){
   '<section class="sec"><div class="wrap"><div class="thanks sheet"><h2>Thank you, '+esc(o.first)+'!</h2>'+
     '<p class="lead" style="margin-top:0">Your order is noted. One more step to make it final:</p>'+
     '<ol><li>Pay <strong>'+money(o.total)+'</strong> via PayPal.</li><li>I confirm your order by email once the payment has arrived.</li></ol>'+
-    '<div class="recap type"><span>'+o.qty+' × Art calendar 2027</span><span>'+esc(o.delivery)+'</span>'+(o.address?'<span>'+esc(o.address).replace(/\n/g,", ")+'</span>':'')+'<span>Total: '+money(o.total)+'</span></div>'+
+    '<div class="recap type"><span>'+o.qty+' × Art calendar 2027</span><span>'+esc(o.delivery)+'</span>'+(o.address?'<span>'+esc(o.address).replace(/\n/g,", ")+'</span>':'')+(o.shipping?'<span>Shipping: '+money(o.shipping)+'</span>':'')+'<span>Total: '+money(o.total)+'</span></div>'+
     '<div class="actions"><a class="pill" href="'+esc(payUrl(o.total))+'" target="_blank" rel="noopener">Pay with PayPal</a></div>'+
     '<p class="hint">I will confirm your order by email to '+esc(o.email)+'.<br><br>Questions? sujin.park@gmx.de</p>'+
   '</div></div></section>'+stone()+'</div>';

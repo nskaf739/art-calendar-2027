@@ -2,6 +2,8 @@
 // creates one row in the Notion database "Orders Overview".
 // NOTION_TOKEN and NOTION_DATABASE_ID are set in Vercel (never in the browser code).
 
+const PRICE = 12; // EUR per calendar
+const shipCost = q => (q <= 2 ? 2.9 : q === 3 ? 4.19 : q <= 5 ? 5.19 : 7.69); // DHL at cost
 const clean = (v, max) => String(v == null ? "" : v).replace(/[\u0000-\u001f]/g, " ").trim().slice(0, max);
 
 module.exports = async (req, res) => {
@@ -22,7 +24,7 @@ module.exports = async (req, res) => {
   const ship = b.delivery === "Shipping to my home";
   const delivery = ship ? "Shipping to my home" : "Receive it in person";
 
-  if (!first || !last || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !(qty >= 1 && qty <= 99)) {
+  if (!first || !last || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email) || !(qty >= 1 && qty <= 10)) {
     return res.status(400).json({ error: "Invalid order" });
   }
 
@@ -31,13 +33,16 @@ module.exports = async (req, res) => {
     : "";
   if (ship && address.replace(/[ ,]/g, "").length < 6) return res.status(400).json({ error: "Address missing" });
 
-  const total = Number(b.total);
+  const shipping = ship ? shipCost(qty) : 0;
+  const total = Math.round((qty * PRICE + shipping) * 100) / 100; // always computed here, never trusted from the browser
   const date = new Date().toISOString().slice(0, 10);
 
   const lines = [
     "Delivery: " + delivery,
     ship ? "Address: " + address : null,
-    Number.isFinite(total) ? "Total shown to customer: " + total.toFixed(2) + " EUR" : null,
+    "Calendars: " + qty + " x " + PRICE.toFixed(2) + " EUR",
+    ship ? "Shipping (DHL): " + shipping.toFixed(2) + " EUR" : null,
+    "Total to pay: " + total.toFixed(2) + " EUR",
   ].filter(Boolean);
 
   const page = {
