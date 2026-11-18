@@ -73,7 +73,6 @@ function art(){
   '<section class="sec"><div class="wrap"><p class="type galcap">Series 01 \u2013 Year of 2027</p><div class="gallery">'+ART_GALLERY.map(function(src,n){return fig(src,ART_INFO[n],"Artwork "+(n+1))}).join("")+'</div></div></section>'+
   '<section class="sec"><div class="wrap"><p class="type galcap">Series 02 \u2013 Ambiguity of Awareness</p><div class="gallery">'+NEW_GALLERY.map(function(src,n){return fig(src,NEW_INFO[n],"New artwork "+(n+1))}).join("")+'</div></div></section>'+
   /* Organic row hidden for now: add it back here with ORG_GALLERY/ORG_INFO */
-  '<section class="sec"><div class="wrap"><div class="ticket"><h2>Want one for your wall?</h2><a class="pill" href="#shop">Order a print</a></div></div></section>'+
   stone()+'</div>';
 }
 
