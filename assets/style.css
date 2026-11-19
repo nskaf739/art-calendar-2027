@@ -380,3 +380,12 @@ main{z-index:3}footer{z-index:2}.stone{z-index:5}
   .hero .actions{flex-wrap:wrap}
   .hero .actions .btn{white-space:normal;text-align:left;line-height:1.25;flex:1 1 150px;max-width:260px}
 }
+
+/* ===== CTA buttons: chrome pill (menu buttons stay as they are) ===== */
+.pill,.pill:hover{background-image:url("img/chrome-pill.png");aspect-ratio:700/384;color:var(--ink);text-shadow:0 1px 0 rgba(255,255,255,.55);filter:drop-shadow(0 6px 8px rgba(0,0,0,.25))}
+.btn.line,.btn.line:hover,.hero .actions .btn.line{--h:56px;--cap:calc(var(--h)*.5);min-height:var(--h);box-sizing:border-box;padding:6px 4px;border-style:solid;border-color:transparent;border-width:0 var(--cap);border-radius:0;background:none;box-shadow:none;color:var(--ink);text-shadow:0 1px 0 rgba(255,255,255,.55);border-image:url("img/chrome-pill.png") 0 192 fill / 0 var(--cap) / 0 stretch;filter:drop-shadow(0 6px 8px rgba(0,0,0,.25));justify-content:center;text-align:center;transition:transform .15s}
+.btn.line:hover{transform:scale(1.03);background:none;color:var(--ink)}
+@media(max-width:760px){
+  .hero .actions{row-gap:14px}
+  .hero .actions .btn.line{flex:1 1 100%;max-width:340px;white-space:normal;line-height:1.25}
+}
