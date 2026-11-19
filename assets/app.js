@@ -98,7 +98,7 @@ function orderPage(){
     '<div class="field"><label for="f-qty">Quantity</label><input type="number" id="f-qty" name="qty" min="1" max="10" step="1" value="1" inputmode="numeric" required></div>'+
     '<fieldset class="field"><legend>Delivery</legend><div class="choices">'+
       '<label class="choice"><input type="radio" name="delivery" value="Receive it in person" checked><span class="ck"></span><span>Receive it in person<small>I\'ll hand it to you when we meet</small></span></label>'+
-'<label class="choice"><input type="radio" name="delivery" value="Shipping to my home"><span class="ck"></span><span>Shipping to my home</span></label>'+
+'<label class="choice"><input type="radio" name="delivery" value="Shipping to my home"><span class="ck"></span><span>Ship it to my home</span></label>'+
     '</div></fieldset>'+
     '<div id="addrbox"><div class="row2 r-street"><div class="field"><label for="f-street">Street</label><input type="text" id="f-street" name="street" autocomplete="address-line1"></div>'+
     '<div class="field"><label for="f-nr">House number</label><input type="text" id="f-nr" name="nr" autocomplete="off"></div></div>'+
@@ -147,7 +147,7 @@ function thanks(){
   '<section class="sec"><div class="wrap"><div class="thanks sheet"><h2>Thank you, '+esc(o.first)+'!</h2>'+
     '<p class="lead" style="margin-top:0">Your order is noted. One more step to make it final:</p>'+
     '<ol><li>Pay <strong>'+money(o.total)+'</strong> via PayPal.</li><li>I confirm your order by email once the payment has arrived.</li></ol>'+
-    '<div class="recap type"><span>'+o.qty+' × Art calendar 2027</span><span>'+esc(o.delivery)+'</span>'+(o.address?'<span>'+esc(o.address).replace(/\n/g,", ")+'</span>':'')+(o.shipping?'<span>Shipping: '+money(o.shipping)+'</span>':'')+'<span>Total: '+money(o.total)+'</span></div>'+
+    '<div class="recap type"><span>'+o.qty+' × Art calendar 2027</span><span>'+esc(o.delivery==='Shipping to my home'?'Ship it to my home':o.delivery)+'</span>'+(o.address?'<span>'+esc(o.address).replace(/\n/g,", ")+'</span>':'')+(o.shipping?'<span>Shipping: '+money(o.shipping)+'</span>':'')+'<span>Total: '+money(o.total)+'</span></div>'+
     '<div class="actions"><a class="pill" href="'+esc(payUrl(o.total))+'" target="_blank" rel="noopener">Pay with PayPal</a></div>'+
     '<p class="hint">I will confirm your order by email to '+esc(o.email)+'.<br><br>Questions? sujin.park@gmx.de</p>'+
   '</div></div></section>'+stone()+'</div>';
