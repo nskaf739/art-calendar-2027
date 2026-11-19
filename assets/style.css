@@ -411,3 +411,4 @@ main{z-index:3}footer{z-index:2}.stone{z-index:5}
 /* Notes: keep the CTA text always visible (no nested filter on the button; navy fallback behind the image) */
 .note .pill,.note .pill:hover{filter:none;background-color:#0b1424;border-radius:999px;color:#f6efe6;opacity:1;text-indent:0;position:relative;z-index:1;-webkit-transform:translateZ(0);transform:translateZ(0);box-shadow:0 4px 8px rgba(0,0,0,.22)}
 .note .pill:hover{transform:translateZ(0) scale(1.04)}
+.notes .note{transform:none;rotate:none;max-width:100%;margin-top:0;font-family:inherit;font-size:inherit}
