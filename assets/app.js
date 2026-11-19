@@ -45,6 +45,7 @@ function stone(){return '<img class="stone" src="'+STONE+'" alt="">'}
 function home(){
     app.innerHTML='<div>'+
   '<section class="sec soon"><div class="wrap"><img class="hiya" src="assets/img/hiya-handwriting.png" alt="hiya! 안녕." width="1122" height="409"></div></section>'+
+  '<section class="sec news"><div class="wrap"><img class="hotnews" src="assets/img/hot-news.png" alt="hot news" width="1486" height="341"></div></section>'+
   stone()+'</div>';
 }
 
