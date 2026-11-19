@@ -54,7 +54,7 @@ function art(){
   app.innerHTML='<div><section class="sub"><div class="wrap">'+
     '<div class="crumb type"><a href="#home">Home</a><span>/</span><span>Art</span></div>'+
     '<div class="titlerow"><h1><mark>Art</mark></h1></div>'+
-    '<p class="type" style="color:var(--muted);margin-top:14px">Hiya, thanks for visiting my gallery!</p></div></section>'+
+    '<p class="lead" style="margin-top:14px">Hiya, thanks for visiting my gallery!</p></div></section>'+
   '<section class="sec"><div class="wrap"><p class="type galcap">Series 01 \u2013 Year of 2027</p><div class="gallery">'+ART_GALLERY.map(function(src,n){return fig(src,ART_INFO[n],"Artwork "+(n+1))}).join("")+'</div></div></section>'+
   '<section class="sec"><div class="wrap"><p class="type galcap">Series 02 \u2013 Ambiguity of Awareness</p><div class="gallery">'+NEW_GALLERY.map(function(src,n){return fig(src,NEW_INFO[n],"New artwork "+(n+1))}).join("")+'</div></div></section>'+
   /* Organic row hidden for now: add it back here with ORG_GALLERY/ORG_INFO */
