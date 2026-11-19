@@ -1,6 +1,6 @@
 # Fonts
 
-## Font set 1 – Su Brush (headlines)
+## Su Brush (current headline font)
 `assets/fonts/SuBrush.woff`
 
 ## Font set 2 – Sujin's handwriting ("use my handwriting font")
