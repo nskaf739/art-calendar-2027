@@ -401,14 +401,12 @@ main{z-index:3}footer{z-index:2}.stone{z-index:5}
 .news{padding-block:clamp(32px,6vh,64px) clamp(120px,22vh,240px)}
 .hotnews{display:block;width:150px;max-width:60%;height:auto;margin:0}
 
-/* Hot news notes: taped paper note, 9-slice so it grows with its content */
-.notes{display:flex;flex-wrap:wrap;gap:36px 32px;margin-top:28px;align-items:flex-start}
-.note{width:320px;max-width:100%;box-sizing:border-box;border-style:solid;border-width:118px 0 31px;border-image:url("img/note.png") 150 0 40 0 fill / 118px 0 31px 0 stretch;padding:0 28px 14px;position:relative;filter:drop-shadow(0 8px 10px rgba(0,0,0,.22))}
-.note h3{margin:-34px 0 12px;font-size:1.55rem;line-height:1.1;color:var(--ink)}
-.note img{display:block;width:100%;height:auto}
-.note .type{margin:10px 0 0;font-size:.72rem;line-height:1.35;color:var(--muted)}
-.note .pill,.note .pill:hover{display:flex;align-items:center;justify-content:center;width:150px;margin:14px 0 0;font-size:.95rem;filter:drop-shadow(0 4px 5px rgba(0,0,0,.25))}
-/* Notes: keep the CTA text always visible (no nested filter on the button; navy fallback behind the image) */
-.note .pill,.note .pill:hover{filter:none;background-color:#0b1424;border-radius:999px;color:#f6efe6;opacity:1;text-indent:0;position:relative;z-index:1;-webkit-transform:translateZ(0);transform:translateZ(0);box-shadow:0 4px 8px rgba(0,0,0,.22)}
-.note .pill:hover{transform:translateZ(0) scale(1.04)}
-.notes .note{transform:none;rotate:none;max-width:100%;margin-top:0;font-family:inherit;font-size:inherit}
+/* Hot news items: handwriting title (burgundy), image, CTA. One .news-item per item inside .notes */
+:root{--burgundy:#7a1f2e}
+.notes{display:flex;flex-wrap:wrap;gap:48px 40px;margin-top:28px;align-items:flex-start}
+.news-item{width:300px;max-width:100%}
+.news-item h3{margin:0 0 14px;font-size:1.7rem;line-height:1.1;color:var(--burgundy)}
+.news-item img{display:block;width:100%;height:auto}
+.news-item .type{margin:10px 0 0;font-size:.72rem;line-height:1.35;color:var(--muted)}
+.news-item .pill,.news-item .pill:hover{display:flex;align-items:center;justify-content:center;width:150px;margin:16px 0 0;font-size:.95rem;filter:none;background-color:#0b1424;border-radius:999px;color:#f6efe6;box-shadow:0 4px 8px rgba(0,0,0,.22);transform:translateZ(0)}
+.news-item .pill:hover{transform:translateZ(0) scale(1.04)}
