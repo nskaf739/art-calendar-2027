@@ -1,3 +1,4 @@
+@font-face{font-family:"Sujin Handwriting";src:url("fonts/SujinHandwriting.woff2") format("woff2"),url("fonts/SujinHandwriting.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
 @font-face{font-family:"Su Brush";src:url("fonts/SuBrush.woff") format("woff");font-weight:400;font-style:normal;font-display:swap}
 /* Layout: a physical scrapbook. Fixed paper photo behind everything, pages "flip" in from the left binding, content is taped, clipped and stuck onto the page. Single look by choice (paper), so no dark theme. */
 :root{
@@ -389,3 +390,7 @@ main{z-index:3}footer{z-index:2}.stone{z-index:5}
   .hero .actions{row-gap:14px}
   .hero .actions .btn.line{flex:1 1 100%;max-width:340px;white-space:normal;line-height:1.25}
 }
+
+/* Font set 2: Sujin's handwriting. Opt-in only: add class "hand" to any element. Has A-Z, a-z and space; other characters fall back to the body font. */
+:root{--hand:"Sujin Handwriting",var(--body)}
+.hand{font-family:var(--hand);font-weight:400;letter-spacing:.02em}
