@@ -45,7 +45,11 @@ function stone(){return '<img class="stone" src="'+STONE+'" alt="">'}
 function home(){
     app.innerHTML='<div>'+
   '<section class="sec soon"><div class="wrap"><img class="hiya" src="assets/img/hiya-handwriting.png" alt="hiya! 안녕." width="1122" height="409"></div></section>'+
-  '<section class="sec news"><div class="wrap"><img class="hotnews" src="assets/img/hot-news.png" alt="hot news" width="1486" height="341"></div></section>'+
+  '<section class="sec news"><div class="wrap"><img class="hotnews" src="assets/img/hot-news.png" alt="hot news" width="1486" height="341">'+
+    '<div class="notes">'+
+      '<article class="note"><h3 class="hand">Calendar order available now</h3><img src="assets/img/news-calendar.jpg" alt="Art calendar 2027, September page" loading="lazy"><a class="pill" href="#shop">Order</a></article>'+
+      '<article class="note"><h3 class="hand">most recent painting</h3><img src="assets/img/news-painting.jpg" alt="Series 02 \u2013 Ambiguity of Awareness, painting with four eyes" loading="lazy"><p class="type">Series 02 \u2013 Ambiguity of Awareness</p><a class="pill" href="#art">See art</a></article>'+
+    '</div></div></section>'+
   stone()+'</div>';
 }
 

@@ -400,3 +400,12 @@ main{z-index:3}footer{z-index:2}.stone{z-index:5}
 .soon{padding-bottom:0}
 .news{padding-block:clamp(32px,6vh,64px) clamp(120px,22vh,240px)}
 .hotnews{display:block;width:150px;max-width:60%;height:auto;margin:0}
+
+/* Hot news notes: taped paper note, 9-slice so it grows with its content */
+.notes{display:flex;flex-wrap:wrap;gap:36px 32px;margin-top:28px;align-items:flex-start}
+.note{width:320px;max-width:100%;box-sizing:border-box;border-style:solid;border-width:118px 0 31px;border-image:url("img/note.png") 150 0 40 0 fill / 118px 0 31px 0 stretch;padding:0 28px 14px;position:relative;filter:drop-shadow(0 8px 10px rgba(0,0,0,.22));transform:rotate(-1.2deg)}
+.note:nth-child(2n){transform:rotate(1.1deg)}
+.note h3{margin:-34px 0 12px;font-size:1.55rem;line-height:1.1;color:var(--ink)}
+.note img{display:block;width:100%;height:auto}
+.note .type{margin:10px 0 0;font-size:.72rem;line-height:1.35;color:var(--muted)}
+.note .pill,.note .pill:hover{display:flex;align-items:center;justify-content:center;width:150px;margin:14px 0 0;font-size:.95rem;filter:drop-shadow(0 4px 5px rgba(0,0,0,.25))}
