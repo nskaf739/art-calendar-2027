@@ -394,3 +394,5 @@ main{z-index:3}footer{z-index:2}.stone{z-index:5}
 /* Font set 2: Sujin's handwriting. Opt-in only: add class "hand" to any element. Has A-Z, a-z and space; other characters fall back to the body font. */
 :root{--hand:"Sujin Handwriting",var(--body)}
 .hand{font-family:var(--hand);font-weight:400;letter-spacing:.02em}
+
+.hiya{display:block;width:min(560px,86%);height:auto;margin:0 auto}

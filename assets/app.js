@@ -44,9 +44,7 @@ function stone(){return '<img class="stone" src="'+STONE+'" alt="">'}
 
 function home(){
     app.innerHTML='<div>'+
-  '<section class="sec soon"><div class="wrap"><p class="type" style="color:var(--muted);margin-bottom:20px">Sujin Park</p>'+
-    '<h1><mark>Coming soon</mark></h1>'+
-    '<p class="lead">New work is on its way.</p></div></section>'+
+  '<section class="sec soon"><div class="wrap"><img class="hiya" src="assets/img/hiya-handwriting.png" alt="hiya! 안녕." width="1122" height="409"></div></section>'+
   stone()+'</div>';
 }
 
