@@ -33,7 +33,7 @@ function topic(id){return TOPICS.filter(function(t){return t.id===id})[0]}
 function payUrl(t){return 'https://www.paypal.me/'+encodeURIComponent(CONFIG.paypalMe)+'/'+(Math.round(t*100)/100).toFixed(2).replace(/\.00$/,'')+CONFIG.currencyCode}
 function money(n){return CONFIG.currency+(Math.round(n*100)/100).toFixed(2).replace(/\.00$/,"")}
 var STONE="assets/img/stone.webp";
-var STUDIO="assets/img/studio.jpg";
+var STUDIO="assets/img/hero-cover.jpg";
 var DROPS={1:"assets/img/drop1.webp",2:"assets/img/drop2.webp"};
 function renderChips(cur){
   chips.innerHTML=TOPICS.map(function(t,i){
@@ -69,8 +69,8 @@ function orderPage(){
     '<h1>Art <mark>calendar</mark></h1>'+
     '<p class="lead"><strong>Twelve paintings, one calendar for 2027.</strong> Every page is one of my own paintings. Order yours, then have it shipped to your home or get it from me in person.</p>'+
     '<div class="actions"><a class="pill" href="#orderform" data-go="orderform">Order a calendar</a><a class="btn line" href="#art">See all paintings included in this calendar</a></div>'+
-  '</div><div class="polwrap"><img class="studio" src="'+STUDIO+'" alt="Paintings and colour swatches in my studio">'+
-    '<div class="sticker"><div><b>12</b><span>art<br>pages</span></div></div></div></div></section>'+
+  '</div><div class="polwrap"><img class="studio" src="'+STUDIO+'" alt="The art calendar 2027 on a window sill">'+
+    '</div></div></section>'+
 
   '<section class="sec"><div class="wrap"><article class="letter sheet"><p class="type lh">Dear friend,</p>'+
     '<p>This series explores art as a way of navigating emotional uncertainty. When emotions resist clear naming or expression, visual language can give form to the intangible.</p>'+
